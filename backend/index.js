@@ -1,4 +1,5 @@
 const port = process.env.PORT || 4000;
+const baseUrl = process.env.BASE_URL || "http://localhost:4000";
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -98,7 +99,7 @@ app.get("/", (req, res) => {
 app.post("/upload", upload.single('product'), (req, res) => {
     res.json({
         success: 1,
-        image_url: `/images/${req.file.filename}`
+        image_url: `${baseUrl}/images/${req.file.filename}`
     });
 });
 
